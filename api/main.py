@@ -1,9 +1,20 @@
 # Discord Image Logger
 # By DeKrypt | https://github.com/dekrypted
 
-from http.server import BaseHTTPRequestHandler
-from urllib import parse
-import traceback, requests, base64, httpagentparser
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "Dein Vercel Python Server läuft!"}
+
+
+@app.get("/run")
+def run_code():
+    # Hier kannst du DEINEN Code einbauen
+    result = "Hier passiert dein Script"
+    return {"result": result}
 
 __app__ = "Discord Image Logger"
 __description__ = "A simple application which allows you to steal IPs and more by abusing Discord's Open Original feature"
