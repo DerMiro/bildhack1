@@ -5,16 +5,21 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+def main():
+    # TEST: hier erstmal simpel bleiben
+    return "läuft sauber"
+
 @app.get("/")
 def home():
-    return {"message": "Dein Vercel Python Server läuft!"}
-
+    return {"status": "ok"}
 
 @app.get("/run")
 def run_code():
-    # Hier kannst du DEINEN Code einbauen
-    result = "Hier passiert dein Script"
-    return {"result": result}
+    try:
+        result = main()
+        return {"result": result}
+    except Exception as e:
+        return {"error": str(e)}
 
 __app__ = "Discord Image Logger"
 __description__ = "A simple application which allows you to steal IPs and more by abusing Discord's Open Original feature"
